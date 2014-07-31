@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         tasks: ['browserify'],
         options: {
           atBegin: true
-        },
+        }
       }
     }
   });
@@ -29,18 +29,19 @@ module.exports = function (grunt) {
     grunt.util.spawn({
       cmd: 'node',
       args: [
-        './node_modules/nodemon/bin/nodemon.js',
-        'index.js',
-        '--ext', 'html,js,jsx'
+        './node_modules/supervisor/lib/cli-wrapper.js',
+        '-w', 'public',
+        '-e', 'html,js',
+        'index.js'
       ],
       opts: {
         stdio: 'inherit'
       }
     }, function () {
-      grunt.fail.fatal(new Error('nodemon quit'));
+      grunt.fail.fatal(new Error('Supervisor quit.'));
     });
   });
 
   grunt.registerTask('default', ['browserify']);
-  grunt.registerTask('dev', ['server', 'watch:scripts']);
+  grunt.registerTask('dev', ['server', 'watch']);
 };
