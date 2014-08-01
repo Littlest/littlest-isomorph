@@ -20,6 +20,7 @@
     "grunt-browserify": "^2.1.4",
     "grunt-contrib-watch": "^0.6.1",
     "reactify": "^0.14.0",
-    "supervisor": "^0.6.0"
+    "supervisor": "^0.6.0",
+    "envify": "^2.0.1"
   }
 }

@@ -1,15 +1,14 @@
 /**
  * @jsx React.DOM
  */
-
 var React = require('react');
 var Content = require('./content.jsx');
 
 var App = React.createClass({
-  render: function() {
+  render: function () {
     return (
       <div>
-        <Content path={this.props.path} />
+        <Content path={this.props.path} route={this.props.route} config={this.props.config} />
         <footer>
           <nav>
             <ul>

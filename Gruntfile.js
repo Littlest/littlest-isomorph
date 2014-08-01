@@ -7,7 +7,7 @@ module.exports = function (grunt) {
         src: ['lib/client.js'],
         dest: 'public/bundle.js',
         options: {
-          transform: ['reactify']
+          transform: ['envify', 'reactify']
         }
       }
     },
