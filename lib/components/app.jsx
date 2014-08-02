@@ -3,6 +3,7 @@
  */
 var React = require('react');
 var Content = require('./content.jsx');
+var User = require('./user.jsx');
 
 var App = React.createClass({
   render: function () {
@@ -14,6 +15,7 @@ var App = React.createClass({
             <ul>
               <li><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
+              <li><a href="/user/schoonology">Schoonology</a></li>
             </ul>
           </nav>
         </footer>

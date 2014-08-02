@@ -8,5 +8,10 @@
     "path": "/about",
     "method": "get",
     "props": {}
+  },
+  "user": {
+    "path": "/user/:userName",
+    "method": "get",
+    "props": {}
   }
 }

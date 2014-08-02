@@ -13,7 +13,7 @@ module.exports = function (grunt) {
     },
     watch: {
       scripts: {
-        files: ['**/*.js', '**/*.jsx', '!public/bundle.js'],
+        files: ['**/*.js', '**/*.jsx', '**/*.json', '!public/bundle.js'],
         tasks: ['browserify'],
         options: {
           atBegin: true
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
       args: [
         './node_modules/supervisor/lib/cli-wrapper.js',
         '-w', 'public',
-        '-e', 'html,js',
+        '-e', 'html,js,json',
         'index.js'
       ],
       opts: {
