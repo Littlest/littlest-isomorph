@@ -2,14 +2,27 @@
  * @jsx React.DOM
  */
 var React = require('react');
-var Content = require('./content.jsx');
+var About = require('./about.jsx');
+var Home = require('./home.jsx');
+var NotFound = require('./not-found.jsx');
 var User = require('./user.jsx');
 
 var App = React.createClass({
+  getMainContent: function (path) {
+    if (path === '/') {
+      return <Home />;
+    } else if (path === '/about') {
+      return <About />;
+    } else if (/user\/.*/.test(path)) {
+      return <User username={this.props.route.userName} />;
+    } else {
+      return <NotFound />;
+    }
+  },
   render: function () {
     return (
       <div>
-        <Content path={this.props.path} route={this.props.route} config={this.props.config} />
+        {this.getMainContent(this.props.path)}
         <footer>
           <nav>
             <ul>
