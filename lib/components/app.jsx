@@ -8,21 +8,22 @@ var NotFound = require('./not-found.jsx');
 var User = require('./user.jsx');
 
 var App = React.createClass({
-  getMainContent: function (path) {
-    if (path === '/') {
-      return <Home />;
-    } else if (path === '/about') {
-      return <About />;
-    } else if (/user\/.*/.test(path)) {
-      return <User username={this.props.route.userName} />;
-    } else {
-      return <NotFound />;
+  getMainContent: function () {
+    switch (this.props.route.name) {
+      case 'index':
+        return <Home />;
+      case 'about':
+        return <About />;
+      case 'user':
+        return <User username={this.props.route.params.userName} />;
+      default:
+        return <NotFound />;
     }
   },
   render: function () {
     return (
       <div>
-        {this.getMainContent(this.props.path)}
+        {this.getMainContent()}
         <footer>
           <nav>
             <ul>
