@@ -9,21 +9,21 @@
   "author": "Michael Schoonmaker <michael.r.schoonmaker@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "connect": "^3.1.0",
-    "ecstatic": "^0.5.4",
-    "node-jsx": "^0.11.0",
-    "react": "^0.11.1",
-    "react-when": "^1.0.0",
+    "connect": "~3.1.0",
+    "ecstatic": "~0.5.4",
+    "node-jsx": "~0.11.0",
+    "react": "~0.11.1",
+    "react-when": "~1.0.0",
     "routr": "0.0.1",
-    "superagent": "^0.18.2",
-    "when": "^3.4.2",
+    "superagent": "~0.18.2",
+    "when": "~3.4.2"
   },
   "devDependencies": {
-    "envify": "^2.0.1",
-    "grunt": "^0.4.5",
-    "grunt-browserify": "^2.1.4",
-    "grunt-contrib-watch": "^0.6.1",
-    "reactify": "^0.14.0",
-    "supervisor": "^0.6.0",
+    "envify": "~2.0.1",
+    "grunt": "~0.4.5",
+    "grunt-browserify": "~2.1.4",
+    "grunt-contrib-watch": "~0.6.1",
+    "reactify": "~0.14.0",
+    "supervisor": "~0.6.0"
   }
 }
