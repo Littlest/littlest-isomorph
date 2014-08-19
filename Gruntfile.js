@@ -13,7 +13,7 @@ module.exports = function (grunt) {
     },
     watch: {
       scripts: {
-        files: ['**/*.js', '**/*.jsx', '**/*.json', '!public/bundle.js'],
+        files: ['lib/**/*.js', 'lib/**/*.jsx', 'lib/**/*.json'],
         tasks: ['browserify'],
         options: {
           atBegin: true
