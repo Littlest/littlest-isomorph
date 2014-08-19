@@ -27,3 +27,5 @@ node_modules
 # Browserify output
 public/bundle.js
 
+# LESS output
+public/bundle.css

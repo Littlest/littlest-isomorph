@@ -1,4 +1,5 @@
 var fork = require('child_process').fork;
+var path = require('path');
 
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -11,10 +12,36 @@ module.exports = function (grunt) {
         }
       }
     },
+    less: {
+      client: {
+        src: [
+          'node_modules/purecss/pure.css',
+          'node_modules/purecss/grids-responsive.css',
+          'styles/**/*.less'
+        ],
+        dest: 'public/bundle.css',
+        options: {
+          paths: function (srcFile) {
+            return [
+              path.dirname(srcFile),
+              path.resolve(__dirname, 'node_modules')
+            ];
+          },
+          relativeUrls: true
+        }
+      }
+    },
     watch: {
       scripts: {
         files: ['lib/**/*.js', 'lib/**/*.jsx', 'lib/**/*.json'],
         tasks: ['browserify'],
+        options: {
+          atBegin: true
+        }
+      },
+      styles: {
+        files: ['styles/**/*.less'],
+        tasks: ['less'],
         options: {
           atBegin: true
         }
@@ -23,6 +50,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('server', function () {
