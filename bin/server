@@ -19,7 +19,8 @@ var morgan = require('morgan');
 var config = require('../lib/config');
 var renderer = require('../lib/renderer');
 var Router = require('../lib/router');
-var router = new Router();
+var routes = require('../lib/routes');
+var router = new Router({ routes: routes });
 var app = connect();
 
 // Install a development-focused logger.

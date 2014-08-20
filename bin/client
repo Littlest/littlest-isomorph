@@ -4,10 +4,13 @@
  */
 var Client = require('../lib/client');
 var Router = require('../lib/router');
+var routes = require('../lib/routes');
 
 // Install the client.
 Client({
-  router: new Router(),
+  router: new Router({
+    routes: routes
+  }),
   window: typeof window === 'undefined' ? this : window
 })
   .start();
