@@ -1,0 +1,16 @@
+/*!
+ * This "script" bootstraps the client-specific code. See Client.js for
+ * more information.
+ */
+var Client = require('../lib/client');
+var Router = require('../lib/router');
+
+// Install the client.
+Client({
+  router: new Router(),
+  window: typeof window === 'undefined' ? this : window
+})
+  .start();
+
+// Log the top-level configuration for debugging.
+console.log('Config:', require('../lib/config'));

@@ -5,7 +5,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     browserify: {
       client: {
-        src: ['lib/client.js'],
+        src: ['bin/client'],
         dest: 'public/bundle.js',
         options: {
           transform: ['envify', 'reactify']
@@ -33,7 +33,7 @@ module.exports = function (grunt) {
     },
     watch: {
       scripts: {
-        files: ['lib/**/*.js', 'lib/**/*.jsx', 'lib/**/*.json'],
+        files: ['bin/client', 'lib/**/*.js', 'lib/**/*.jsx', 'lib/**/*.json'],
         tasks: ['browserify'],
         options: {
           atBegin: true
