@@ -8,8 +8,10 @@
   },
   "author": "Michael Schoonmaker <michael.r.schoonmaker@gmail.com>",
   "license": "MIT",
+  "peerDependencies": {
+    "react": "~0.11.1"
+  },
   "dependencies": {
-    "react": "~0.11.1",
     "react-when": "~1.0.0",
     "routr": "0.0.1"
   }
