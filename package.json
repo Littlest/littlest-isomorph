@@ -2,7 +2,7 @@
   "name": "littlest-isomorph",
   "version": "0.5.1",
   "description": "An attempt at a isomorphic JavaScript stack with as little internal code as possible.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
