@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "react-when": "~1.0.0",
-    "routr": "0.0.1"
+    "routr": "0.0.1",
+    "when": "~3.4.5"
   }
 }
