@@ -4,7 +4,7 @@
   "description": "An attempt at a isomorphic JavaScript stack with as little internal code as possible.",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test"
   },
   "author": "Michael Schoonmaker <michael.r.schoonmaker@gmail.com>",
   "license": "MIT",
@@ -15,5 +15,9 @@
     "react-when": "~1.0.0",
     "routr": "0.0.1",
     "when": "~3.4.5"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.21.4"
   }
 }
