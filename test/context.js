@@ -74,5 +74,30 @@ describe('Context', function () {
       expect(this.context.stores.test).to.have.property('foo', 'bar');
       expect(child.stores.test).to.have.property('foo', 42);
     });
+
+    it('should isolate Action side effects', function (done) {
+      var parent = this.context;
+
+      parent.createStore('test', { 'foo': 'bar' })
+        .handle('test:go:succeeded', function (data) {
+          this.foo = data;
+        });
+
+      parent.createAction('test:go', function (params) {
+        return params;
+      });
+
+      var child = parent.getChild();
+
+      expect(parent.stores.test).to.have.property('foo', 'bar');
+      expect(child.stores.test).to.have.property('foo', 'bar');
+
+      child.performAction('test:go', 42)
+        .then(function () {
+          expect(parent.stores.test).to.have.property('foo', 'bar');
+          expect(child.stores.test).to.have.property('foo', 42);
+        })
+        .then(done, done);
+    });
   });
 });
