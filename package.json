@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "littlest-dispatcher": "~0.2.0",
-    "react-when": "~1.0.0",
     "routr": "0.0.1",
     "when": "~3.4.5"
   },
