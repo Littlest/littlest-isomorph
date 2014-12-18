@@ -180,5 +180,10 @@ describe('Router', function () {
 
       expect(route).to.be.null();
     });
+
+    it('should render extra params as a query', function () {
+      expect(this.router.getRouteUrl('test', { key: 'val' })).to.equal('/test?key=val');
+      expect(this.router.getRouteUrl('test:view', { testId: 'foo', key: 'val' })).to.equal('/test/foo?key=val');
+    });
   });
 });
