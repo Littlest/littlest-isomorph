@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var cheerio = require('cheerio');
 var expect = require('chai').expect;
 var Context = require('../../lib/context');
 var StaticRenderer = require('../../lib/renderers/static');
@@ -10,16 +11,6 @@ var TEMPLATE_PATH_WITH_HEAD = path.resolve(__dirname, '..', 'fixtures', 'templat
 var TEMPLATE_PATH_WITHOUT_HEAD = path.resolve(__dirname, '..', 'fixtures', 'templates', 'no-head.html');
 var TEMPLATE_PATH_WITHOUT_BODY = path.resolve(__dirname, '..', 'fixtures', 'templates', 'no-body.html');
 var STATIC_TEMPLATE = fs.readFileSync(TEMPLATE_PATH_WITH_HEAD, 'utf8');
-
-// TODO(schoon) - Find a simple HTML assertion library.
-function getTagOpenRegex(tag) {
-  return new RegExp('(<' + (tag || 'div') + '[^>]*>)');
-}
-
-function getTagContentsRegex(tag) {
-  tag = tag || 'div';
-  return new RegExp('<' + tag + '[^>]*>([^<]*)</' + tag + '>');
-}
 
 describe('Static Renderer', function () {
   describe('constructor', function () {
@@ -62,14 +53,11 @@ describe('Static Renderer', function () {
         var html = this.renderer.render({
           body: Body
         });
-        var bodyRegex = getTagOpenRegex('body');
+        var $body = cheerio.load(html)('body');
 
-        expect(html).to.match(bodyRegex);
-
-        var body = bodyRegex.exec(html)[1];
-
-        expect(body).to.contain(' data-reactid="');
-        expect(body).to.contain(' data-react-checksum="');
+        expect($body).to.have.length(1);
+        expect($body.attr('data-reactid')).to.exist();
+        expect($body.attr('data-react-checksum')).to.exist();
       });
     });
 
@@ -85,14 +73,11 @@ describe('Static Renderer', function () {
           head: Head,
           body: Body
         });
-        var bodyRegex = getTagOpenRegex('body');
+        var $body = cheerio.load(html)('body');
 
-        expect(html).to.match(bodyRegex);
-
-        var body = bodyRegex.exec(html)[1];
-
-        expect(body).to.contain(' data-reactid="');
-        expect(body).to.contain(' data-react-checksum="');
+        expect($body).to.have.length(1);
+        expect($body.attr('data-reactid')).to.exist();
+        expect($body.attr('data-react-checksum')).to.exist();
       });
 
       it('should render a static {head}', function () {
@@ -100,14 +85,11 @@ describe('Static Renderer', function () {
           head: Head,
           body: Body
         });
-        var headRegex = getTagOpenRegex('head');
+        var $head = cheerio.load(html)('head');
 
-        expect(html).to.match(headRegex);
-
-        var head = headRegex.exec(html)[1];
-
-        expect(head).to.not.contain(' data-reactid="');
-        expect(head).to.not.contain(' data-react-checksum="');
+        expect($head).to.have.length(1);
+        expect($head.attr('data-reactid')).to.not.exist();
+        expect($head.attr('data-react-checksum')).to.not.exist();
       });
     });
 
@@ -125,7 +107,7 @@ describe('Static Renderer', function () {
           body: Body
         }, this.context);
 
-        this.script = getTagContentsRegex('script').exec(html)[1];
+        this.script = cheerio.load(html)('script').text();
       });
 
       it('should render a serialized Context', function () {
