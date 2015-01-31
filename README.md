@@ -1,7 +1,8 @@
 # Littlest Isomorph
 
-The goal of Littlest Isomorph is to be a shell for an Isomorphic JavaScript
-application with as little internal code as possible.
+A toolkit for building isomorphic applications using JavaScript and React,
+including solutions for navigation, routing, rendering, and (most importantly)
+contextualized Store state. _Part of the [Littlest][littlest] family._
 
 ## Philosophy
 
@@ -14,21 +15,19 @@ application with as little internal code as possible.
 - HTML5 History-friendly links
 - Isomorphic rendering with React
 - Isomorphic routing with Routr
-- CommonJS via Browserify
+- Isomorphic data binding mixin
+- Contextualized Store state using [Littlest Dispatcher][dispatcher]
 
 ## Usage
 
 For an example app that doubles as a great starting point for Littlest Isomorph
 projects, take a look at [the Yeoman Generator][generator]
 
-## To-Do
-
-- A simple Flux dispatcher.
-- Base class for simple Stores.
-
 ## Alternatives
 
 - [Rendr][rendr]: A Backbone-based isomorphic front layer produced by Airbnb.
 
+[littlest]: https://github.com/Littlest
+[dispatcher]: https://github.com/Littlest/littlest-dispatcher
 [generator]: https://github.com/Schoonology/generator-littlest-isomorph
 [rendr]: https://github.com/rendrjs/rendr
