@@ -1,6 +1,6 @@
 {
   "name": "littlest-isomorph",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "description": "An attempt at a isomorphic JavaScript stack with as little internal code as possible.",
   "main": "lib/index.js",
   "scripts": {
